@@ -1,0 +1,488 @@
+[
+  {
+    "model": "trajectories.airline",
+    "pk": 1,
+    "fields": {
+      "name": "United Airlines",
+      "iata_code": "UA",
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.airline",
+    "pk": 2,
+    "fields": {
+      "name": "Lufthansa",
+      "iata_code": "LH",
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.airline",
+    "pk": 3,
+    "fields": {
+      "name": "Emirates",
+      "iata_code": "EK",
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.airline",
+    "pk": 4,
+    "fields": {
+      "name": "Japan Airlines",
+      "iata_code": "JL",
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 1,
+    "fields": {
+      "airline": 1,
+      "origin": 3471,
+      "destination": 1467,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 2,
+    "fields": {
+      "airline": 1,
+      "origin": 1467,
+      "destination": 1317,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 3,
+    "fields": {
+      "airline": 1,
+      "origin": 1317,
+      "destination": 4455,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 4,
+    "fields": {
+      "airline": 1,
+      "origin": 4455,
+      "destination": 5533,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 5,
+    "fields": {
+      "airline": 1,
+      "origin": 5533,
+      "destination": 3503,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 6,
+    "fields": {
+      "airline": 1,
+      "origin": 1467,
+      "destination": 5533,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 7,
+    "fields": {
+      "airline": 1,
+      "origin": 5533,
+      "destination": 6040,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 8,
+    "fields": {
+      "airline": 2,
+      "origin": 1317,
+      "destination": 1467,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 9,
+    "fields": {
+      "airline": 2,
+      "origin": 1467,
+      "destination": 4455,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 10,
+    "fields": {
+      "airline": 2,
+      "origin": 4455,
+      "destination": 5533,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 11,
+    "fields": {
+      "airline": 2,
+      "origin": 5533,
+      "destination": 6040,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 12,
+    "fields": {
+      "airline": 2,
+      "origin": 6040,
+      "destination": 7594,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 13,
+    "fields": {
+      "airline": 2,
+      "origin": 1317,
+      "destination": 5533,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 14,
+    "fields": {
+      "airline": 3,
+      "origin": 5533,
+      "destination": 1467,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 15,
+    "fields": {
+      "airline": 3,
+      "origin": 1467,
+      "destination": 3471,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 16,
+    "fields": {
+      "airline": 3,
+      "origin": 3471,
+      "destination": 4455,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 17,
+    "fields": {
+      "airline": 3,
+      "origin": 5533,
+      "destination": 6040,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 18,
+    "fields": {
+      "airline": 3,
+      "origin": 6040,
+      "destination": 7594,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 19,
+    "fields": {
+      "airline": 3,
+      "origin": 5533,
+      "destination": 3503,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 20,
+    "fields": {
+      "airline": 4,
+      "origin": 6040,
+      "destination": 7594,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 21,
+    "fields": {
+      "airline": 4,
+      "origin": 7594,
+      "destination": 3503,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 22,
+    "fields": {
+      "airline": 4,
+      "origin": 3503,
+      "destination": 5533,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 24,
+    "fields": {
+      "airline": 1,
+      "origin": 1467,
+      "destination": 3471,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 25,
+    "fields": {
+      "airline": 1,
+      "origin": 1317,
+      "destination": 1467,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 26,
+    "fields": {
+      "airline": 1,
+      "origin": 4455,
+      "destination": 1317,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 27,
+    "fields": {
+      "airline": 1,
+      "origin": 5533,
+      "destination": 4455,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 28,
+    "fields": {
+      "airline": 1,
+      "origin": 3503,
+      "destination": 5533,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 29,
+    "fields": {
+      "airline": 1,
+      "origin": 6040,
+      "destination": 5533,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 30,
+    "fields": {
+      "airline": 2,
+      "origin": 1467,
+      "destination": 1317,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 31,
+    "fields": {
+      "airline": 2,
+      "origin": 4455,
+      "destination": 1467,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 32,
+    "fields": {
+      "airline": 2,
+      "origin": 5533,
+      "destination": 4455,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 33,
+    "fields": {
+      "airline": 2,
+      "origin": 6040,
+      "destination": 5533,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 34,
+    "fields": {
+      "airline": 2,
+      "origin": 7594,
+      "destination": 6040,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 35,
+    "fields": {
+      "airline": 2,
+      "origin": 5533,
+      "destination": 1317,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 36,
+    "fields": {
+      "airline": 2,
+      "origin": 7594,
+      "destination": 1467,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 37,
+    "fields": {
+      "airline": 3,
+      "origin": 1467,
+      "destination": 5533,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 38,
+    "fields": {
+      "airline": 3,
+      "origin": 4455,
+      "destination": 3471,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 39,
+    "fields": {
+      "airline": 3,
+      "origin": 1467,
+      "destination": 4455,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 40,
+    "fields": {
+      "airline": 3,
+      "origin": 6040,
+      "destination": 1467,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 41,
+    "fields": {
+      "airline": 3,
+      "origin": 7594,
+      "destination": 6040,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 42,
+    "fields": {
+      "airline": 3,
+      "origin": 3503,
+      "destination": 5533,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 43,
+    "fields": {
+      "airline": 4,
+      "origin": 7594,
+      "destination": 6040,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 44,
+    "fields": {
+      "airline": 4,
+      "origin": 3503,
+      "destination": 7594,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 45,
+    "fields": {
+      "airline": 4,
+      "origin": 5533,
+      "destination": 3503,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "trajectories.route",
+    "pk": 46,
+    "fields": {
+      "airline": 4,
+      "origin": 6040,
+      "destination": 5533,
+      "created_at": "2025-12-22T00:00:00Z"
+    }
+  }
+]
