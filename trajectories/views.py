@@ -1,97 +1,81 @@
-import json
-from collections import deque, defaultdict
+"""API views for trajectory finding."""
+
+from typing import Optional
+
 from django.http import HttpRequest, JsonResponse
-from .models import Airport, Airline
+
+from .models import Airline
+from .services import TrajectoryFinder
 
 
-def find_trajectory(request: HttpRequest):
-    """
-    Find a trajectory between two airports for a given airline using BFS.
+class TrajectoryAPI:
+    """API endpoints for trajectory finding."""
 
-    Query parameters:
-    - airline_iata: IATA code of the airline
-    - origin: IATA code of origin airport
-    - destination: IATA code of destination airport
-    """
-    airline_iata = request.GET.get("airline_iata")
-    origin_code = request.GET.get("origin")
-    destination_code = request.GET.get("destination")
+    @staticmethod
+    def _get_query_param(request: HttpRequest, param: str) -> Optional[str]:
+        value = request.GET.get(param, "").strip()
+        return value if value else None
 
-    # Validate parameters
-    if not all([airline_iata, origin_code, destination_code]):
-        return JsonResponse(
-            {"error": "Missing required parameters: airline_iata, origin, destination"},
-            status=400,
+    @staticmethod
+    def find_trajectory(request: HttpRequest) -> JsonResponse:
+        """Find shortest trajectory between two airports for given airline.
+
+        Query Parameters:
+            - airline_iata: (e.g. "UA")
+            - origin: (e.g. "JFK")
+            - destination: (e.g. "LAX")
+
+        Returns:
+            JSON response with trajectory
+
+        Example:
+            GET trajectories/find?airline_iata=UA&origin=JFK&destination=LAX
+        """
+
+        airline_iata = TrajectoryAPI._get_query_param(request, "airline_iata")
+        origin = TrajectoryAPI._get_query_param(request, "origin")
+        destination = TrajectoryAPI._get_query_param(request, "destination")
+
+        if not all([airline_iata, origin, destination]):
+            return JsonResponse(
+                {
+                    "error": "Missing required parameters",
+                    "required": ["airline_iata", "origin", "destination"],
+                },
+                status=400,
+            )
+
+        try:
+            airline = Airline.objects.get(iata_code=airline_iata)
+        except Airline.DoesNotExist:
+            return JsonResponse(
+                {"error": f"Airline '{airline_iata}' not found"},
+                status=404,
+            )
+
+        trajectory, error = TrajectoryFinder.find_trajectory(
+            airline, origin, destination
         )
 
-    try:
-        airline = Airline.objects.get(iata_code=airline_iata)
-    except Airline.DoesNotExist:
-        return JsonResponse({"error": f"Airline {airline_iata} not found"}, status=404)
+        if error:
+            return JsonResponse({"error": error}, status=400)
 
-    # Get all airports for this airline through Route model
-    routes = airline.route_set.all()
-    airports = [route.airport for route in routes]
-    airport_dict = {airport.iata_code: airport for airport in airports}
-
-    # Check if both origin and destination exist in airline's network
-    if origin_code not in airport_dict:
-        return JsonResponse(
-            {"error": f"Origin airport {origin_code} not in {airline_iata} network"},
-            status=400,
-        )
-    if destination_code not in airport_dict:
         return JsonResponse(
             {
-                "error": f"Destination airport {destination_code} not in {airline_iata} network"
+                "airline": {
+                    "iata_code": airline.iata_code,
+                    "name": airline.name,
+                },
+                "route": {
+                    "origin": origin,
+                    "destination": destination,
+                    "stops": len(trajectory) - 2,  # Minus dep+dest
+                },
+                "trajectory": trajectory,
             },
-            status=400,
+            status=200,
         )
 
-    # Build adjacency list (all airports connected to each other)
-    adjacency_list = defaultdict(list)
-    airport_codes = list(airport_dict.keys())
 
-    for code in airport_codes:
-        for other_code in airport_codes:
-            if code != other_code:
-                adjacency_list[code].append(other_code)
-
-    # BFS to find trajectory
-    def bfs_trajectory(start, end, graph):
-        if start == end:
-            return [start]
-
-        visited = set()
-        queue = deque([(start, [start])])
-        visited.add(start)
-
-        while queue:
-            current, path = queue.popleft()
-
-            for neighbor in graph[current]:
-                if neighbor == end:
-                    return path + [neighbor]
-
-                if neighbor not in visited:
-                    visited.add(neighbor)
-                    queue.append((neighbor, path + [neighbor]))
-
-        return None
-
-    trajectory = bfs_trajectory(origin_code, destination_code, adjacency_list)
-
-    return JsonResponse(
-        {
-            "airline": {
-                "iata_code": airline.iata_code,
-                "name": airline.name,
-            },
-            "origin": origin_code,
-            "destination": destination_code,
-            "adjacency_list": dict(adjacency_list),
-            "trajectory": trajectory,
-            "trajectory_length": len(trajectory) if trajectory else 0,
-            "airports_count": len(airports),
-        }
-    )
+def find_trajectory(request: HttpRequest) -> JsonResponse:
+    return TrajectoryAPI.find_trajectory(request)
