@@ -7,6 +7,9 @@ class Airport(models.Model):
     name = models.CharField(max_length=200)
     lat = models.FloatField()
     lon = models.FloatField()
+    iso_country = models.CharField(max_length=2, blank=True, default="")
+    icao_code = models.CharField(max_length=4, blank=True, default="")
+    continent = models.CharField(max_length=2, blank=True, default="")
 
     class Meta:
         verbose_name_plural = "Airports"
