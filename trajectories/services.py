@@ -1,6 +1,7 @@
 """Graph traversal and trajectory finding services."""
 
 import random
+import time
 from collections import deque, defaultdict
 from math import radians, sin, cos, sqrt, atan2
 from typing import Dict, List, Optional, Set, Tuple
@@ -63,7 +64,7 @@ def genetic_algorithm_tsp(
     population_size: int = 100,
     generations: int = 500,
     mutation_rate: float = 0.02,
-) -> Tuple[List[str], float]:
+) -> Tuple[List[str], float, float]:
     """Solve TSP using genetic algorithm.
 
     Args:
@@ -73,8 +74,9 @@ def genetic_algorithm_tsp(
         mutation_rate: Probability of mutation per individual
 
     Returns:
-        Tuple of (best route as airport codes, total distance)
+        Tuple of (best route as airport codes, total distance, execution time in seconds)
     """
+    start_time = time.time()
     n = len(airports)
 
     # Initialize population with random routes
@@ -137,8 +139,9 @@ def genetic_algorithm_tsp(
 
     # Convert indices to airport codes
     best_route_codes = [airports[i].iata_code for i in best_route]
+    execution_time = time.time() - start_time
 
-    return best_route_codes, best_distance
+    return best_route_codes, best_distance, execution_time
 
 
 class AirlineGraph:
@@ -357,12 +360,13 @@ class TrajectoryAPI:
                 status=400,
             )
 
-        best_route, total_distance = genetic_algorithm_tsp(airports)
+        best_route, total_distance, execution_time = genetic_algorithm_tsp(airports)
 
         response_data = {
             "route": best_route,
             "total_distance_km": round(total_distance, 2),
             "airports_count": len(airports),
+            "computation_time_seconds": round(execution_time, 3),
         }
 
         if airline:
