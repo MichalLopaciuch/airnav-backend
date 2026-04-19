@@ -1,4 +1,4 @@
-# Airnav | Airline Trajectory Finder
+# tsp-rest | Airline Trajectory Finder
 
 A Django-based API for finding optimal airline routes and solving the Traveling Salesman Problem (TSP) across airport networks.
 
